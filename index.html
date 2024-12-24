@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GuideMyAI - Bridging Human Insight and AI Innovation</title>
+    <meta name="description" content="GuideMyAI helps organizations harness the power of LLMs to drive strategic decision-making and create transformative user experiences.">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        :root {
+            --navy-900: #020B2D;
+            --sky-400: #38BDF8;
+            --navy-800: #091B4E;
+            --navy-700: #132B6F;
+        }
+        header img {
+            height: 1000px; /* Adjust based on your design */
+            max-width: 2000px; /* Optional, to constrain logo width */
+            object-fit: contain; /* Ensures proper scaling */
+        }
+        body {
+            background-color: var(--navy-900);
+            color: white;
+        }
+        .hero {
+            text-align: center;
+            padding: 100px 20px;
+            background: linear-gradient(135deg, var(--navy-900), var(--navy-800));
+        }
+        .hero h1 {
+            font-size: 3em;
+            color: var(--sky-400);
+            margin-bottom: 10px;
+        }
+        .hero p {
+            font-size: 1.2em;
+            color: white;
+            margin-bottom: 20px;
+        }
+        .hero button {
+            background-color: var(--sky-400);
+            color: #0A1A2F;
+            border: none;
+            padding: 15px 30px;
+            font-size: 1em;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .hero button:hover {
+            background-color: #48A9C6;
+        }
+        .services, .industries, .about {
+            padding: 60px 20px;
+            text-align: center;
+        }
+        .services h2, .industries h2, .about h2 {
+            margin-bottom: 30px;
+            font-size: 2.5em;
+            color: var(--sky-400);
+        }
+        .card {
+            display: inline-block;
+            background-color: var(--navy-800);
+            color: white;
+            width: 300px;
+            margin: 15px;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+        .card:hover {
+            background-color: var(--navy-700);
+        }
+        footer {
+            background-color: var(--navy-800);
+            text-align: center;
+            padding: 20px;
+            font-size: 0.9em;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav class="bg-navy-800 shadow-lg fixed w-full z-50">
+            <div class="max-w-7xl mx-auto px-4 flex justify-between h-16">
+                <div class="flex items-center">
+                    <a href="/">
+                    </a>
+                </div>
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="#services" class="text-gray-300 hover:text-sky-400">Services</a>
+                    <a href="#industries" class="text-gray-300 hover:text-sky-400">Industries</a>
+                    <a href="#about" class="text-gray-300 hover:text-sky-400">About</a>
+                    <a href="#contact" class="bg-sky-400 text-black px-4 py-2 rounded-md hover:bg-sky-500">Let’s Talk AI</a>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <section class="hero">
+        <img src="assets/guidemyailogo.jpeg" alt="GuideMyAI Logo" class="mx-auto mb-4" style="max-width: 150px; height: auto;">
+        <h1>GuideMyAI</h1>
+        <p>Bridging the gap between human insight and AI innovation.</p>
+        <span id="typed" style="font-size: 1.5em; color: #5FC3E4;"></span>
+        <div id="typed-strings" style="display: none;">
+            <p>Guide my AI strategy...</p>
+            <p>Guide my AI hiring...</p>
+            <p>Guide my AI journey...</p>
+            <p>Guide my AI implementation...</p>
+            <p>Guide my AI innovation...</p>
+            <p>Guide my AI transformation...</p>
+            <p>Guide my AI analytics...</p>
+            <p>Guide my AI compliance...</p>
+        </div>
+    </section>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/typed.js/2.0.12/typed.min.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            var typed = new Typed('#typed', {
+                stringsElement: '#typed-strings',
+                typeSpeed: 50,
+                backSpeed: 30,
+                loop: true,
+                preStringTyped: function() {
+                    document.querySelector('#typed').textContent = 'Guide my AI ';
+                }
+            });
+        });
+    </script>
+
+    <section class="services" id="services">
+        <h2>Our Services</h2>
+        <div class="card">
+            <h3>AI Strategy & Roadmap</h3>
+            <p>Chart your AI adoption journey, from ideation to execution.</p>
+        </div>
+        <div class="card">
+            <h3>Harnessing LLMs</h3>
+            <p>for decision-making and user experiences.</p>
+        </div>
+        <div class="card">
+            <h3>AI Team Building</h3>
+            <p>Recruit, train, and upskill your AI workforce.</p>
+        </div>
+    </section>
+
+    <section class="industries" id="industries">
+        <h2>Industries We Serve</h2>
+        <div class="card">
+            <h3>Financial Services</h3>
+            <p>Risk assessment, fraud detection, and AI-driven customer service.</p>
+        </div>
+        <div class="card">
+            <h3>Education</h3>
+            <p>Personalized learning platforms and virtual teaching assistants.</p>
+        </div>
+        <div class="card">
+            <h3>R&D</h3>
+            <p>Predictive maintenance, advanced analytics, and product innovation.</p>
+        </div>
+    </section>
+
+    <section class="about" id="about">
+        <h2>About Us</h2>
+        <p>At GuideMyAI, we believe AI and humans need each other. We guide organizations into the era of AI while ensuring AI solutions are impactful and effective.</p>
+        <p>With expertise in strategy, LLMs, and enterprise transformation, we’re your partner in innovation.</p>
+    </section>
+
+    <footer id="contact">
+        <p>Contact us at <a href="mailto:info@guidemyai.com" style="color: #5FC3E4;">andre@guidemyai.com</a></p>
+        <p>&copy; 2024 GuideMyAI. All rights reserved.</p>
+    </footer>
+</body>
+</html>
+
+
+
