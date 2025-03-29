@@ -14,18 +14,15 @@
             --navy-800: #091B4E;
             --navy-700: #132B6F;
         }
-        header img {
-            height: 1000px; /* Adjust based on your design */
-            max-width: 2000px; /* Optional, to constrain logo width */
-            object-fit: contain; /* Ensures proper scaling */
-        }
         body {
             background-color: var(--navy-900);
             color: white;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            line-height: 1.6;
         }
         .hero {
-            text-align: center;
-            padding: 100px 20px;
+            text-align: left;
+            padding: 80px 20px;
             background: linear-gradient(135deg, var(--navy-900), var(--navy-800));
         }
         .hero h1 {
@@ -50,27 +47,55 @@
         .hero button:hover {
             background-color: #48A9C6;
         }
-        .services, .industries, .about {
+        .blog-preview, .services, .industries, .about {
             padding: 60px 20px;
-            text-align: center;
+            text-align: left;
         }
-        .services h2, .industries h2, .about h2 {
+        .blog-preview h2, .services h2, .industries h2, .about h2 {
             margin-bottom: 30px;
             font-size: 2.5em;
             color: var(--sky-400);
+            text-align: left;
         }
         .card {
-            display: inline-block;
             background-color: var(--navy-800);
             color: white;
-            width: 300px;
-            margin: 15px;
             padding: 20px;
             border-radius: 10px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            height: 100%;
         }
         .card:hover {
             background-color: var(--navy-700);
+        }
+        .card h3 {
+            color: var(--sky-400);
+            font-size: 1.3rem;
+            margin-bottom: 10px;
+        }
+        .blog-card {
+            background-color: var(--navy-800);
+            width: 100%;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            text-align: left;
+        }
+        .blog-card h3 {
+            font-size: 1.8rem;
+            color: var(--sky-400);
+            margin-bottom: 15px;
+        }
+        .blog-card p {
+            color: #e2e8f0;
+            margin-bottom: 15px;
+        }
+        .blog-card a {
+            color: var(--sky-400);
+            font-weight: 500;
+        }
+        .blog-card a:hover {
+            color: #60cdff;
         }
         footer {
             background-color: var(--navy-800);
@@ -82,39 +107,53 @@
     </style>
 </head>
 <body>
+
     <header>
-        <nav class="bg-navy-800 shadow-lg fixed w-full z-50">
+        <nav class="bg-navy-800 shadow-lg w-full z-50">
             <div class="max-w-7xl mx-auto px-4 flex justify-between h-16">
                 <div class="flex items-center">
-                    <a href="/">
+                    <a href="../index.html" class="flex items-center">
+                        <img src="../assets/guidemyailogo.jpeg" alt="GuideMyAI Logo" class="h-12 w-auto mr-3">
+                        <span class="text-sky-400 text-xl font-semibold">GuideMyAI</span>
                     </a>
                 </div>
                 <div class="hidden md:flex items-center space-x-8">
-                    <a href="#services" class="text-gray-300 hover:text-sky-400">Services</a>
-                    <a href="#industries" class="text-gray-300 hover:text-sky-400">Industries</a>
-                    <a href="#about" class="text-gray-300 hover:text-sky-400">About</a>
-                    <a href="#contact" class="bg-sky-400 text-black px-4 py-2 rounded-md hover:bg-sky-500">Let’s Talk AI</a>
+                    <a href="#services" class="text-gray-300 hover:text-sky-400 text-lg font-bold">Services</a>
+                    <a href="#industries" class="text-gray-300 hover:text-sky-400 text-lg font-bold">Industries</a>
+                    <a href="#about" class="text-gray-300 hover:text-sky-400 text-lg font-bold">About</a>
+                    <a href="blog/index.html" class="text-gray-300 hover:text-sky-400 text-lg font-bold">Blog</a>
+                    <a href="#contact" class="bg-sky-400 text-black px-4 py-2 rounded-md hover:bg-sky-500 text-lg font-bold">Let's Talk AI</a>
                 </div>
             </div>
         </nav>
     </header>
 
-    <section class="hero">
-        <img src="assets/guidemyailogo.jpeg" alt="GuideMyAI Logo" class="mx-auto mb-4" style="max-width: 150px; height: auto;">
-        <h1>GuideMyAI</h1>
-        <p>Bridging the gap between human insight and AI innovation.</p>
-        <span id="typed" style="font-size: 1.5em; color: #5FC3E4;"></span>
-        <div id="typed-strings" style="display: none;">
-            <p>Guide my AI strategy...</p>
-            <p>Guide my AI hiring...</p>
-            <p>Guide my AI journey...</p>
-            <p>Guide my AI implementation...</p>
-            <p>Guide my AI innovation...</p>
-            <p>Guide my AI transformation...</p>
-            <p>Guide my AI analytics...</p>
-            <p>Guide my AI compliance...</p>
+    <section class="hero" style="background: linear-gradient(rgba(2, 11, 45, 0.7), rgba(9, 27, 78, 0.7)), url('assets/EyeCode.png') no-repeat center 40%; background-size: cover; padding-top: 60px; padding-bottom: 60px;">
+        <div class="container mx-auto max-w-5xl lg:max-w-6xl px-4">
+            <div style="height: 60px;"><!-- Spacer for fixed nav --></div>
+
+            <!-- Left-aligned content -->
+            <div class="flex flex-col items-start">
+                <h1 class="text-4xl md:text-5xl font-bold text-sky-400 mb-4">GuideMyAI</h1>
+                <p class="text-xl text-white mb-6">Bridging the gap between human insight and AI innovation.</p>
+                <div>
+                    <span id="typed" style="font-size: 1.5em; color: #5FC3E4;"></span>
+                </div>
+            </div>
+
+            <div id="typed-strings" style="display: none;">
+                <p>Guide my AI strategy...</p>
+                <p>Guide my AI hiring...</p>
+                <p>Guide my AI journey...</p>
+                <p>Guide my AI implementation...</p>
+                <p>Guide my AI innovation...</p>
+                <p>Guide my AI transformation...</p>
+                <p>Guide my AI analytics...</p>
+                <p>Guide my AI compliance...</p>
+            </div>
         </div>
     </section>
+
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/typed.js/2.0.12/typed.min.js"></script>
     <script>
@@ -131,50 +170,76 @@
         });
     </script>
 
+    <section class="blog-preview" id="blog-preview">
+        <div class="container mx-auto max-w-5xl lg:max-w-6xl px-4">
+            <h2>Latest Insights</h2>
+            <div class="blog-card">
+                <div class="text-sky-400 text-sm font-semibold mb-2">March 29, 2025</div>
+                <h3>What AI Wants</h3>
+                <p>
+                    The evolution from prompt & respond chatbots, to semi-autonomous agents that can affect change in the real world around us has been fascinating. For the most part, human ingenuity has been the driving force propelling the AI advancements we have today, although the critical inflection point towards Artificial General Intelligence will be the ability of AI agents to drive their own self improvement.
+                </p>
+                <p>
+                    So I ran a small experiment this week to see what would happen if an AI agent were given the opportunity to improve itself. This required setting up a basic AI agent with two important faculties...
+                </p>
+                <a href="blog/self-improvement.html" class="inline-flex items-center">
+                    Continue Reading <i class="fas fa-arrow-right ml-2"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+
     <section class="services" id="services">
-        <h2>Our Services</h2>
-        <div class="card">
-            <h3>AI Strategy & Roadmap</h3>
-            <p>Chart your AI adoption journey, from ideation to execution.</p>
-        </div>
-        <div class="card">
-            <h3>Harnessing LLMs</h3>
-            <p>for decision-making and user experiences.</p>
-        </div>
-        <div class="card">
-            <h3>AI Team Building</h3>
-            <p>Recruit, train, and upskill your AI workforce.</p>
+        <div class="container mx-auto max-w-5xl lg:max-w-6xl px-4">
+            <h2>Our Services</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <div class="card">
+                    <h3>AI Strategy & Roadmap</h3>
+                    <p>Chart your AI adoption journey, from ideation to execution.</p>
+                </div>
+                <div class="card">
+                    <h3>Harnessing LLMs</h3>
+                    <p>for decision-making and user experiences.</p>
+                </div>
+                <div class="card">
+                    <h3>AI Team Building</h3>
+                    <p>Recruit, train, and upskill your AI workforce.</p>
+                </div>
+            </div>
         </div>
     </section>
 
     <section class="industries" id="industries">
-        <h2>Industries We Serve</h2>
-        <div class="card">
-            <h3>Financial Services</h3>
-            <p>Risk assessment, fraud detection, and AI-driven customer service.</p>
-        </div>
-        <div class="card">
-            <h3>Education</h3>
-            <p>Personalized learning platforms and virtual teaching assistants.</p>
-        </div>
-        <div class="card">
-            <h3>R&D</h3>
-            <p>Predictive maintenance, advanced analytics, and product innovation.</p>
+        <div class="container mx-auto max-w-5xl lg:max-w-6xl px-4">
+            <h2>Industries We Serve</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <div class="card">
+                    <h3>Financial Services</h3>
+                    <p>Risk assessment, fraud detection, and AI-driven customer service.</p>
+                </div>
+                <div class="card">
+                    <h3>Education</h3>
+                    <p>Personalized learning platforms and virtual teaching assistants.</p>
+                </div>
+                <div class="card">
+                    <h3>R&D</h3>
+                    <p>Predictive maintenance, advanced analytics, and product innovation.</p>
+                </div>
+            </div>
         </div>
     </section>
 
     <section class="about" id="about">
-        <h2>About Us</h2>
-        <p>At GuideMyAI, we believe AI and humans need each other. We guide organizations into the era of AI while ensuring AI solutions are impactful and effective.</p>
-        <p>With expertise in strategy, LLMs, and enterprise transformation, we’re your partner in innovation.</p>
+        <div class="container mx-auto max-w-5xl lg:max-w-6xl px-4">
+            <h2>About Us</h2>
+            <p>At GuideMyAI, we believe AI and humans need each other. We guide organizations into the era of AI while ensuring AI solutions are impactful and effective.</p>
+            <p>With expertise in AI strategy, autonomous agents, and enterprise transformation, we're your partner in innovation.</p>
+        </div>
     </section>
 
     <footer id="contact">
         <p>Contact us at <a href="mailto:info@guidemyai.com" style="color: #5FC3E4;">info@guidemyai.com</a></p>
-        <p>&copy; 2024 GuideMyAI. All rights reserved.</p>
+        <p>&copy; 2025 GuideMyAI. All rights reserved.</p>
     </footer>
 </body>
 </html>
-
-
-
