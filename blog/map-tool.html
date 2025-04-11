@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Google Maps for codebases? - GuideMyAI</title>
+    <meta name="description" content="How we created a Google Maps-like tool for AI agents to navigate complex codebases and solved the perspective problem in large-scale software projects.">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        :root {
+            --navy-900: #020B2D;
+            --sky-400: #38BDF8;
+            --navy-800: #091B4E;
+            --navy-700: #132B6F;
+        }
+        body {
+            background-color: var(--navy-900);
+            color: white;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            line-height: 1.6;
+        }
+        .hero {
+            padding: 40px 20px;
+            background: linear-gradient(135deg, var(--navy-900), var(--navy-800));
+        }
+        .hero h1 {
+            font-size: 2.5em;
+            color: var(--sky-400);
+            margin-bottom: 10px;
+        }
+        article {
+            font-size: 1.1rem;
+        }
+        article p {
+            margin-bottom: 1.5rem;
+            color: #e2e8f0;
+        }
+        article h2 {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--sky-400);
+            margin-top: 2.5rem;
+            margin-bottom: 1.2rem;
+        }
+        article blockquote {
+            font-style: italic;
+            color: #cbd5e0;
+            border-left: 4px solid var(--sky-400);
+            padding-left: 1rem;
+            margin: 2rem 0;
+        }
+        article ul, article ol {
+            margin-bottom: 1.5rem;
+            padding-left: 1.5rem;
+        }
+        article li {
+            margin-bottom: 0.5rem;
+        }
+        footer {
+            background-color: var(--navy-800);
+            text-align: center;
+            padding: 20px;
+            font-size: 0.9rem;
+            color: white;
+        }
+        .key-takeaways {
+            background-color: var(--navy-800);
+            border-radius: 0.5rem;
+            padding: 1.5rem;
+            margin: 2rem 0;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav class="bg-navy-800 shadow-lg w-full z-50">
+            <div class="max-w-7xl mx-auto px-4 flex justify-between h-16">
+                <div class="flex items-center">
+                    <a href="../index.html" class="flex items-center">
+                        <img src="../assets/guidemyailogo.jpeg" alt="GuideMyAI Logo" class="h-12 w-auto mr-3">
+                        <span class="text-sky-400 text-xl font-semibold">GuideMyAI</span>
+                    </a>
+                </div>
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="../index.html#services" class="text-gray-300 hover:text-sky-400 text-lg font-bold">Services</a>
+                    <a href="../index.html#industries" class="text-gray-300 hover:text-sky-400 text-lg font-bold">Industries</a>
+                    <a href="../index.html#about" class="text-gray-300 hover:text-sky-400 text-lg font-bold">About</a>
+                    <a href="index.html" class="text-gray-300 hover:text-sky-400 text-lg font-bold">Blog</a>
+                    <a href="../index.html#contact" class="bg-sky-400 text-black px-4 py-2 rounded-md hover:bg-sky-500 text-lg font-bold">Let's Talk AI</a>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <section class="hero" style="background: linear-gradient(rgba(2, 11, 45, 0.7), rgba(9, 27, 78, 0.7)), url('../assets/maptool.png') no-repeat center 40%; background-size: cover; padding-top: 120px; padding-bottom: 120px;">
+        <div class="container mx-auto max-w-5xl lg:max-w-6xl px-4">
+            <div class="text-sky-400 text-sm font-semibold mb-4">April 11, 2025</div>
+            <h1 class="text-4xl md:text-5xl font-bold mb-6">Google Maps for AI Agents</h1>
+        </div>
+    </section>
+
+    <article class="py-12">
+        <div class="container mx-auto px-4 max-w-5xl lg:max-w-5xl">
+            <div class="max-w-none">
+                <p class="text-xl font-semibold text-sky-400 my-6">
+                    Google Maps for codebases? That's basically what we built for our AI agents!
+                </p>
+
+                <p>
+                    AI agents are on the rise, nowhere more so than in the software development industry. LLM's are language powerhouses that make them exceptionally adept at writing code in any programming language. To date they have been helpful sidekicks for quick prototypes (e.g. BOLT, Loveable, etc.) or code assistants (Cursor, Microsoft Copilot, etc.), specializing in small jobs or being helpful amplifiers to human engineers.
+                </p>
+                <p class="mb-1">
+                    So no surprise that the most common projects we have been asked to support are AI agents capable of truly large assignments:
+                </p>
+                <ul class="list-disc pl-8 space-y-1 mt-0 mb-2">
+                    <li>agents that can rebuild a legacy system.</li>
+                    <li>agents that can perform data migrations.</li>
+                    <li>agents that can build a new CRM.</li>
+                </ul>
+
+                <p class="mb-1">
+                    But modern software applications are BIG, and many of today's AI agents suffer two critical shortcomings:
+                </p>
+                <ul class="list-disc pl-8 space-y-1 mt-0 mb-2">
+                    <li><span class="text-sky-400 font-semibold">"Perspective"</span> - being able to scale focus between macro and micro</li>
+                    <li><span class="text-sky-400 font-semibold">"Endurance"</span> - being able to persist continuity and direction on very large initiatives</li>
+                </ul>
+
+                <p>
+                    Humans have the innate ability to step back and see the big picture, or focus in on a particular detail, and to maintain our bearings through a large initiative.
+                </p>
+
+                <p>
+                    <span class="text-sky-400 font-bold">What would it take for our AI agents to replicate these abilities?</span>
+                </p>
+
+                <p>
+                    I once asked a colleague for advice on adapting to my new role after a promotion. His answer was simple: "Andre, it's like in math: once you can add single digits, all you need to do to work in millions is move the decimal!"
+                </p>
+
+                <p>
+                    And this captures the essence of the perspective problem. Being able to shrink things down, yet still retain the essence needed for the problem at hand. This insight led to the development of our "map" tool for AI agents. <span class="text-sky-400 font-bold">It works very much like google maps: zoom out and see the whole earth, or zoom in to a particular address.</span> And with this, our agents gained the ability to choose their own focus.
+                </p>
+
+                <p class="mb-1">
+                    I asked one of our AI coding agents: "Of all your tools, which is your favourite and why?" It picked the map tool, and had the following to add:
+                </p>
+                <blockquote class="mt-2 mb-3 px-4 py-3">
+                    <i>"In practice, I find this tool is often my starting point for almost any code-related task."</i>
+                </blockquote>
+                <blockquote class="mt-2 mb-3 px-4 py-3">
+                    <i>"Before diving into specific implementations, I use it to orient myself and build that crucial big picture understanding."</i>
+                </blockquote>
+                <blockquote class="mt-2 mb-3 px-4 py-3">
+                    <i>"It allows me to build a mental model of how different components relate to each other, rather than just seeing isolated files."</i>
+                </blockquote>
+
+                <p>
+                    In a future post I will share more of my thoughts on solving the endurance problem, and how we are helping AI maintain continuity and direction on very large initiatives.
+                </p>
+
+                <div class="key-takeaways my-10 p-6 bg-navy-800 rounded-lg">
+                    <h3 class="text-xl font-bold text-sky-400 mb-4">Real-World Results</h3>
+                    <p>
+                        With this capability, we effectively addressed the 'perspective' problem. Our agents are now equally adept at contributing to brand new builds, or jumping right into large established code bases.
+                    </p>
+                    <p>
+                        In a recent project, this tool helped our agent rebuild aspects of an existing code base spanning ~3000 files and ~600,000 lines of code. That is roughly 4-6 million tokens! <span class="text-sky-400 font-bold">A project that would have taken months, was completed in just 3 weeks.</span>
+                    </p>
+                </div>
+
+
+
+
+            </div>
+
+            <div class="mt-8">
+                <a href="index.html" class="inline-block text-sky-400 hover:text-sky-300">&larr; Back to Blog</a>
+            </div>
+        </div>
+    </article>
+
+    <footer>
+        <p>Contact us at <a href="mailto:info@guidemyai.com" style="color: #5FC3E4;">info@guidemyai.com</a></p>
+        <p>&copy; 2025 GuideMyAI. All rights reserved.</p>
+    </footer>
+</body>
+</html>
