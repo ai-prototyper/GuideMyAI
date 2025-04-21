@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Google Maps for codebases? - GuideMyAI</title>
+    <meta name="description" content="How we created a Google Maps-like tool for AI agents to navigate complex codebases and solved the perspective problem in large-scale software projects.">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        :root {
+            --navy-900: #020B2D;
+            --sky-400: #38BDF8;
+            --navy-800: #091B4E;
+            --navy-700: #132B6F;
+        }
+        body {
+            background-color: var(--navy-900);
+            color: white;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            line-height: 1.6;
+        }
+        .hero {
+            padding: 40px 20px;
+            background: linear-gradient(135deg, var(--navy-900), var(--navy-800));
+        }
+        .hero h1 {
+            font-size: 2.5em;
+            color: var(--sky-400);
+            margin-bottom: 10px;
+        }
+        article {
+            font-size: 1.1rem;
+        }
+        article p {
+            margin-bottom: 1.5rem;
+            color: #e2e8f0;
+        }
+        article h2 {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--sky-400);
+            margin-top: 2.5rem;
+            margin-bottom: 1.2rem;
+        }
+        article blockquote {
+            font-style: italic;
+            color: #cbd5e0;
+            border-left: 4px solid var(--sky-400);
+            padding-left: 1rem;
+            margin: 2rem 0;
+        }
+        article ul, article ol {
+            margin-bottom: 1.5rem;
+            padding-left: 1.5rem;
+        }
+        article li {
+            margin-bottom: 0.5rem;
+        }
+        footer {
+            background-color: var(--navy-800);
+            text-align: center;
+            padding: 20px;
+            font-size: 0.9rem;
+            color: white;
+        }
+        .key-takeaways {
+            background-color: var(--navy-800);
+            border-radius: 0.5rem;
+            padding: 1.5rem;
+            margin: 2rem 0;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav class="bg-navy-800 shadow-lg w-full z-50">
+            <div class="max-w-7xl mx-auto px-4 flex justify-between h-16">
+                <div class="flex items-center">
+                    <a href="../index.html" class="flex items-center">
+                        <img src="../assets/guidemyailogo.jpeg" alt="GuideMyAI Logo" class="h-12 w-auto mr-3">
+                        <span class="text-sky-400 text-xl font-semibold">GuideMyAI</span>
+                    </a>
+                </div>
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="../index.html#services" class="text-gray-300 hover:text-sky-400 text-lg font-bold">Services</a>
+                    <a href="../index.html#industries" class="text-gray-300 hover:text-sky-400 text-lg font-bold">Industries</a>
+                    <a href="../index.html#about" class="text-gray-300 hover:text-sky-400 text-lg font-bold">About</a>
+                    <a href="index.html" class="text-gray-300 hover:text-sky-400 text-lg font-bold">Blog</a>
+                    <a href="../index.html#contact" class="bg-sky-400 text-black px-4 py-2 rounded-md hover:bg-sky-500 text-lg font-bold">Let's Talk AI</a>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <section class="hero" style="background: linear-gradient(rgba(2, 11, 45, 0.7), rgba(9, 27, 78, 0.7)), url('../assets/navigation_header.png') no-repeat center 100%; background-size: cover; padding-top: 120px; padding-bottom: 120px;">
+        <div class="container mx-auto max-w-5xl lg:max-w-6xl px-4">
+            <div class="text-sky-400 text-sm font-semibold mb-4">April 21, 2025</div>
+            <h1 class="text-4xl md:text-5xl font-bold mb-6">Can AI lead?</h1>
+        </div>
+    </section>
+
+    <article class="py-12">
+        <div class="container mx-auto px-4 max-w-5xl lg:max-w-5xl">
+            <div class="max-w-none">
+
+                <p>
+                    Our greatest human achievements have often taken the shape of architectural superstructures: Pyramids, Cathedrals, Skyscrapers. Enormous feats built through millions of individual contributions.
+                </p>
+
+                <p>
+                    We've been delivering such marvels for thousands of years. Can AI agents scale to similar heights?
+                </p>
+
+                <p>
+                    AI is remarkably adept at small linguistic feats: writing essays, composing poems, constructing software code. Increasingly faster and better than most humans. But these are small, isolated tasks. Tantamount to laying bricks in the construction of a tower.
+                </p>
+
+                <p>
+                    I've worked with AI agents for the better part of 2 years, and I consistently find myself playing the part of foreman:
+                </p>
+
+                <blockquote>
+                    "here is your next task..."<br>
+                    "that piece there is too big…"<br>
+                    "this here isn't working…"
+                </blockquote>
+
+                <p>
+                    Why can't AI do this itself? What is this contribution that still necessitates my involvement?
+                </p>
+
+                <p>
+                    Simply this: get me from point A to point B. Many problems in life take this form, from physical journeys, to building construction, and even software development. The key is to keep moving toward the destination.
+                </p>
+
+                <p>
+                    This requires:
+                </p>
+                <ul>
+                    <li>Having a clear understanding of point B</li>
+                    <li>Knowing your current position</li>
+                    <li>Continually adapting a plan to get there</li>
+                </ul>
+
+                <p>
+                    Can today's LLMs do this?
+                </p>
+
+                <div class="image-container">
+                    <img src="../assets/navigation_challenge.png" alt="AI Navigation Pathfinding" class="rounded-lg shadow-lg">
+                    <div class="image-caption">A simple navigation challenge: find a path from A to B through obstacles</div>
+                </div>
+
+                <p>
+                    I gave this exact challenge to three leading LLMs—follow a path from A to B, through obstacles:
+                </p>
+                <ul>
+                    <li><strong>Claude 3.5 Sonnet:</strong> 14 iterations to get to B. Struggled to recognize the fence gap.</li>
+                    <li><strong>Gemini 2.5 Pro (exp):</strong> 6 iterations to get to B. Often taking one step too many or too few.</li>
+                    <li><strong>OpenAI O3:</strong> 1 iteration, nailed it!</li>
+                </ul>
+
+                <p>
+                    All reached B eventually. Repeated trials showed Gemini occasionally solving it in 1 shot.
+                </p>
+
+                <p>
+                    Combined with the idea in my last post (being able to scale to different levels of perspective), the ability to chart a course (and adapt it) becomes:
+                </p>
+                <ul>
+                    <li>Start with a macro plan – what components make up the system? What's the roadmap?</li>
+                    <li>Break down each component – which files, procedures, or APIs need to be added/changed?</li>
+                    <li>Repeat until we reach micro tasks – each executable by a single agent or team.</li>
+                </ul>
+
+                <p>
+                    This is classical task decomposition, but with ongoing adjustment and course correction. Hence we can be confident that an individual brick is taking us in the right direction, because small steps scale into a master plan to get to point B.
+                </p>
+
+                <p>
+                    Plotting and adjusting a course has a long tradition in human ventures. From crossing oceans to raising cathedrals, we celebrate leaders who keep a mission on course. I'd argue today's AI Agents can navigate (dare I say "lead") large initiatives, provided we assign the right specialist agents to the job.
+                </p>
+
+                <div class="key-takeaways my-10 p-6 bg-navy-800 rounded-lg">
+                    <h3 class="text-xl font-bold text-sky-400 mb-4">Key Lessons:</h3>
+                    <ul>
+                        <li><strong>Plan → Do → Check → Repeat:</strong> You can't one-shot a full build.</li>
+                        <li><strong>Specialize your agents:</strong> Pair planners (orchestrators) with coders, not one-size-fits-all.</li>
+                        <li><strong>Measure what matters:</strong> Track distance to B, not distance from A.</li>
+                    </ul>
+                </div>
+
+            </div>
+
+            <div class="mt-8">
+                <a href="index.html" class="inline-block text-sky-400 hover:text-sky-300">&larr; Back to Blog</a>
+            </div>
+        </div>
+    </article>
+
+    <footer>
+        <p>Contact us at <a href="mailto:info@guidemyai.com" style="color: #5FC3E4;">info@guidemyai.com</a></p>
+        <p>&copy; 2025 GuideMyAI. All rights reserved.</p>
+    </footer>
+</body>
+</html>
